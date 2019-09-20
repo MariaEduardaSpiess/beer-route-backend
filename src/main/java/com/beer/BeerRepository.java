@@ -1,7 +1,7 @@
-package com.obsei.portal;
+package com.beer;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PesquisadorRepository extends CrudRepository<Pesquisador, Long> {}
+public interface BeerRepository extends CrudRepository<Beer, Long> {}

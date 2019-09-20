@@ -1,4 +1,4 @@
-package com.obsei.portal;
+package com.beer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
-public class PortalObseiApplication {
+public class BeerRouteApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PortalObseiApplication.class, args);
+		SpringApplication.run(BeerRouteApplication.class, args);
 	}
 	
 	@Bean

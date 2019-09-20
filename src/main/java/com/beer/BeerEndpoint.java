@@ -1,4 +1,4 @@
-package com.obsei.portal.pagina_pesquisa;
+package com.beer;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,29 +16,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PaginaPesquisaEndpoint {
+public class BeerEndpoint {
 	
 	@Resource
 	private EntityManager em;
 	
-	private PaginaPesquisaRepository repository;
+	private BeerRepository repository;
 
-	public PaginaPesquisaEndpoint(PaginaPesquisaRepository repository) {
+	public BeerEndpoint(BeerRepository repository) {
 		this.repository = repository;
 	}
 	
-	@GetMapping(path = "/pagina-pesquisa")
-	public ResponseEntity<List<PaginaPesquisa>> findAll() {
+	@GetMapping(path = "/beers")
+	public ResponseEntity<List<Object>> findAll() {
 		return ResponseEntity.ok(StreamSupport.stream(repository.findAll().spliterator(),false).collect(Collectors.toList()));
 	}
 	
-	@PostMapping(path = "/pagina-pesquisa")
-	public ResponseEntity<PaginaPesquisa> cadastrar(@Valid @RequestBody PaginaPesquisa pagina) {
-		return ResponseEntity.ok(repository.save(pagina));
+	@PostMapping(path = "/beer")
+	public ResponseEntity<Beer> cadastrar(@Valid @RequestBody Beer beer) {
+		return ResponseEntity.ok(repository.save(beer));
 	}
 	
-	@PutMapping(path = "/pagina-pesquisa")
-	public ResponseEntity<PaginaPesquisa> atualizar(@Valid @RequestBody PaginaPesquisa pagina) {
-		return ResponseEntity.ok(repository.save(pagina));
+	@PutMapping(path = "/beer")
+	public ResponseEntity<Beer> atualizar(@Valid @RequestBody Beer beer) {
+		return ResponseEntity.ok(repository.save(beer));
 	}
 }
