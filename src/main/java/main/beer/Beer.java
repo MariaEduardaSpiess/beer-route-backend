@@ -11,6 +11,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import main.views.Views;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,18 +33,21 @@ import main.brand.Brand;
 public class Beer {
 
 	@Id
+	@JsonView(Views.Public.class)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
+	@JsonView(Views.Public.class)
 	@Column(name = "description", nullable = false)
 	private String description;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JsonView(Views.Internal.class)
 	@JoinColumn(name = "brandId", nullable = false)
-    @JsonIgnore
 	private Brand brand;
 	
 	@Lob
+	@JsonView(Views.Public.class)
 	@Column(name = "image", nullable = false)
 	private String image;
 }
