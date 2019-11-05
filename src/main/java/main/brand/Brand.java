@@ -30,6 +30,9 @@ public class Brand {
 	
 	@Column(name = "description", nullable = false)
 	private String description;
+
+	@Column(name = "latlng", nullable = false)
+	private String latlng;
 	
 	@Lob
 	@Column(name = "image", nullable = false)
