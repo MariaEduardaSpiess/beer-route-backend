@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import main.views.Views;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +28,8 @@ public class BrandEndpoint {
 	public BrandEndpoint(BrandRepository repository) {
 		this.repository = repository;
 	}
-	
+
+	@JsonView(Views.Public.class)
 	@GetMapping(path = "/brands")
 	public ResponseEntity<List<Object>> findAll() {
 		return ResponseEntity.ok(StreamSupport.stream(repository.findAll().spliterator(),false).collect(Collectors.toList()));
